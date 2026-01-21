@@ -1,26 +1,30 @@
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const App = () => {
   const [data, setData] = useState("");
   const API_URL = import.meta.env.VITE_API_URL;
 
-
   useEffect(() => {
-    fetch(`${API_URL}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
+    if (!API_URL) {
+      console.error("VITE_API_URL is not defined");
+      return;
+    }
+
+    fetch(`${API_URL}/api/check`)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return res.json();
+      })
       .then((data) => setData(data.message))
-      .catch((err) => console.log(err));
-  }, []);
+      .catch((err) => console.error("Fetch error:", err));
+  }, [API_URL]);
 
   return (
     <div className="text-2xl flex justify-center min-h-screen items-center flex-col">
-      <p className=" p-2"> hello react vite.</p>
-      <p className=" p-2"> {data} </p>
+      <p className="p-2">hello react vite.</p>
+      <p className="p-2">{data}</p>
     </div>
   );
 };
