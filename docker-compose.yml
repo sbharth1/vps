@@ -4,6 +4,8 @@ services:
     container_name: express
     ports:
       - "4000:4000"
+    environment:
+      - PORT=4000
     networks:
       - fullstack
     restart: unless-stopped

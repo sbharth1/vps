@@ -2,8 +2,8 @@ import express from 'express'
 import cors from 'cors'
 import dontenv from 'dotenv/config'
 const app = express();
-const apiUrl = process.env.API_URL;
-const port = Number(process.env.PORT);
+const apiUrl = process.env.API_URL || "http://localhost:4000";
+const port = Number(process.env.PORT) || 4000;
 
 app.use(express.json())
 app.use(cors({
@@ -13,7 +13,7 @@ app.use(cors({
     allowedHeaders:["Content-Type","Authroziation"]
 }))
 
-app.use("/api/check",(req,res)=> {
+app.use(`${apiUrl}`,(req,res)=> {
     res.json({message:"node work!!"})
 })
 
