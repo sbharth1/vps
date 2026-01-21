@@ -12,7 +12,7 @@ export default defineConfig({
     tailwindcss(),
   ],
   server:{
-    proxy:{
+    proxy:{ 
       "/api":{
         target:"http://localhost:4000",
         changeOrigin:true
