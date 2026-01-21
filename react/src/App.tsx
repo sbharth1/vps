@@ -2,9 +2,10 @@ import  { useEffect, useState } from "react";
 
 const App = () => {
   const [data, setData] = useState("");
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
-    fetch("/api/check", {
+    fetch(`${apiUrl}`, {
       method: "GET",
       headers: {
         "Contetn-Type": "application/json",
