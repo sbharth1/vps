@@ -13,7 +13,7 @@ app.use(cors({
     allowedHeaders:["Content-Type","Authroziation"]
 }))
 
-app.use(`${apiUrl}`,(req,res)=> {
+app.get(`${apiUrl}`,(req,res)=> {
     res.json({message:"node work!!"})
 })
 
