@@ -13,7 +13,7 @@ app.use(cors({
 }))
 
 app.get("/api/check",(req,res)=> {
-    res.json({message:"node work!!"})
+    res.json({message:"virtual private network work!"})
 })
 
 

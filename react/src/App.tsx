@@ -23,8 +23,8 @@ const App = () => {
 
   return (
     <div className="text-2xl flex justify-center min-h-screen items-center flex-col">
-      <p className="p-2">hello react vite.</p>
-      <p className="p-2">{data}</p>
+      <h3 className="p-2">{data}</h3>
+
     </div>
   );
 };
