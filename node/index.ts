@@ -1,14 +1,17 @@
 import express from 'express'
 import cors from 'cors'
 import 'dotenv/config'
+
 const app = express();
 const port = Number(process.env.PORT) || 4000;
+const allowedOrigins = process.env.CORS_ORIGIN ? process.env.CORS_ORIGIN.split(",") : [];
+
 
 app.use(express.json())
 app.use(cors({
     methods:["GET","POST","PUT","DELETE"],
     credentials:true,
-    origin:["http://localhost:5173","http://locahost:5174","http://localhost:3000", "http://43.205.239.77:5174"],
+    origin:allowedOrigins,
     allowedHeaders:["Content-Type","Authroziation"]
 }))
 
